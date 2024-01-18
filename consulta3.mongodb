@@ -1,0 +1,211 @@
+use("db1")
+db.universidades.find()
+
+
+use("db1")
+// $ operadores lt, gt, gte, lte
+db.universidades.find(
+    {
+        alumnos: {
+            $lt: 10000
+        }
+    },
+    //proyection
+    {
+        nombre: true,
+        alumnos: true
+    }
+)
+
+use("db1")
+// $ operadores lt, gt, gte, lte
+db.universidades.find(
+    {
+        presupuesto: {
+            $gte: 2000000
+        }
+    },
+    //proyection
+    {
+        nombre: true,
+        presupuesto: true
+    }
+)
+
+use("db1")
+// $ operadores lt, gt, gte, lte
+db.universidades.find(
+    {
+        presupuesto: {
+            $gte: 1000000,
+            $lte: 1500000
+        }
+    },
+    //proyection
+    {
+        nombre: true,
+        presupuesto: true
+    }
+)
+
+
+use("db1")
+// $ operadores lt, gt, gte, lte
+db.universidades.find(
+    {
+        presupuesto: {
+            $gte: 1000000,
+            $lte: 1500000
+        }
+    },
+    //proyection
+    {
+        nombre: true,
+        presupuesto: true
+    }
+)
+
+
+use("db1")
+// $ operadores lt, gt, gte, lte
+db.universidades.find(
+    {
+        $or: [
+            {
+                presupuesto:
+                {
+                    $gt:1200000
+                },
+                alumnos:
+                {
+                    $lt:9000
+                }
+            }
+        ]
+    }
+)
+
+
+use("db1")
+db.universidades.find(
+    {
+        $and: [
+            {
+                presupuesto:
+                {
+                    $gte: 1000000            
+                },
+                presupuesto:
+                {
+                    $lte: 1500000
+                }
+            }
+        ]
+    }
+)
+
+// inc
+
+use("db1")
+db.universidades.updateMany(
+    {
+        alumnos: {
+            $gte: 10000
+        }
+    },
+    //actualizacion
+    {
+        $inc:{
+            presupuesto: 500000
+        }
+    }
+)
+
+use("db1")
+db.universidades.find()
+
+
+//cambiar contenido de un campo
+use("db1")
+db.universidades.updateMany(
+    {
+        alumnos:{
+            $lte:9000
+        }       
+    },
+    {
+        $set:{
+            presupuesto: 500000
+        }
+    }
+)
+
+use("db1")
+db.universidades.find()
+
+
+//Adicionar campo inexistente
+use("db1")
+db.universidades.updateMany(
+    {
+   
+    },
+    {
+        $set:{
+            profesores: 45
+        }
+    }
+)
+
+use("db1")
+db.universidades.find()
+
+
+//Eliminar campo existente
+use("db1")
+db.universidades.updateMany(
+    {
+        alumnos:{
+            $lte: 8000
+        }
+    },
+    {
+        $unset:{
+            profesores: 0
+        }
+    }
+)
+
+use("db1")
+db.universidades.find()
+
+
+use("db1")
+db.universidades.find(
+    //filtro
+    {
+        "direccion.ciudad": "Lima"
+    },
+    {
+        nombre: true
+    }
+)
+
+use("db1")
+db.universidades.find()
+
+
+
+use("db1")
+db.universidades.updateMany(
+    {},
+    {
+        $rename:
+        {
+            direccion : "ubicacion"
+        }
+    }
+)
+
+use("db1")
+db.universidades.find()

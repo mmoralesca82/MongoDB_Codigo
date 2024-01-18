@@ -1,0 +1,70 @@
+use("db1")
+db.universidades.insertOne(
+    {
+        nombre : "UNI",
+        carreras : ["Ing Mecanica","Ing Electrica","Ing Industrial"],
+        alumnos: 5000,
+        //suddocumento
+        direccion: {
+            calle: "Av. Tupac Amaru",
+            numero: 203,
+            distrito: "Rimac",
+            ciudad: "Lima"
+        },
+        presupuesto: 1000000
+    }
+)
+
+use("db1")
+db.universidades.find()
+
+use("db1")
+db.universidades.insertMany(
+    [
+        {
+            nombre : "UNMSM",
+            carreras : ["Ing Mecanica","Derecho","Psicologia"],
+            alumnos: 13000,
+            //suddocumento
+            direccion: {
+                calle: "Av. Arequipa",
+                numero: 789,
+                distrito: "Surco",
+                ciudad: "Lima"
+            },
+            presupuesto: 1500000
+        },
+        {
+            nombre : "PUCP",
+            carreras : ["Ing Mecanica","Derecho","Artes"],
+            alumnos: 8000,
+            //suddocumento
+            direccion: {
+                calle: "Av. Universitaria",
+                numero: 897,
+                distrito: "San Miguel",
+                ciudad: "Lima"
+            },
+            presupuesto: 2000000
+        },
+        {
+            _id: 1, // insertamos manualmente el id
+            nombre : "UMSA",
+            carreras : ["Ing Mecanica","Ing Electrica","Ing Industriales"],
+            alumnos: 9000,
+            //suddocumento
+            direccion: {
+                calle: "Av. Independencia",
+                numero: 569,
+                distrito: "Arequipa",
+                ciudad: "Arequipa"
+            },
+            presupuesto: 1500000
+        }
+    ]
+
+)
+
+
+use("db1")
+db.universidades.find()

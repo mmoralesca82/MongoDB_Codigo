@@ -1,0 +1,52 @@
+// parametrizando una colección de datos
+use("db1")
+db.createCollection("usuarios",
+    {
+        validator:{
+            $jsonSchema:{
+                bsonType: 'object',
+
+                properties: { //atributos que tendrá la coleccion
+                    nombre: {
+                        bsonType: 'string'                   
+                    },
+                    password: {
+                        bsonType: 'string'
+                    },
+                    productos:{
+                        bsonType: 'array',
+                        //items: 'string'
+                        items: {
+                            bsonType: 'object',
+                            properties: {
+                                nombre_producto: {
+                                    bsonType: 'string'
+                                },
+                                precio:{
+                                    bsonType: 'double'
+                                },
+                                cantidad:{
+                                    bsonType: 'int'
+                                },
+                                comentarios: {
+                                    bsonType: 'array',
+                                    items: {
+                                        bsonType: 'objectId' // Almacenaremos los Id de los comentarios 
+                                                            // que se relaconaran a otro documento.                                         
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    direcciones: {
+                        bsonType: 'array',
+                        items:{
+                            bsonType: 'objectId'     
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+)
